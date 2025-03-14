@@ -1,6 +1,6 @@
 /*
-Previo 06. Carga de Modelos             Alfaro Fragoso José Gabriel
-Fecha de entrega: 09 de Marzo de 2025           317019450
+Practica 06. Carga de Modelos             Alfaro Fragoso José Gabriel
+Fecha de entrega: 14 de Marzo de 2025           317019450
 
 */
 
@@ -61,7 +61,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Previo6. Carga de modelos y camara sintetica. Gabriel Alfaro ", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Practica6. Carga de modelos y camara sintetica. Gabriel Alfaro ", nullptr, nullptr );
     
     if ( nullptr == window )
     {
@@ -119,7 +119,7 @@ int main( )
         DoMovement();
 
         // Clear the colorbuffer
-        glClearColor(0.729f, 0.961f, 0.953f, 1.0f);
+        glClearColor(0.012f, 0.016f, 0.259f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shader.Use();
@@ -135,15 +135,7 @@ int main( )
 
         //agregar otro modelo
 
-        model = glm::translate(model, glm::vec3(0.0f, 3.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 3.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
