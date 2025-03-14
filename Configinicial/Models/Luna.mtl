@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
-# File Created: 14.03.2025 00:11:53
+# File Created: 14.03.2025 11:05:44
 
 newmtl Material__25
 	Ns 10.0000
@@ -12,5 +12,5 @@ newmtl Material__25
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka texturas\8K Moon_Diff_4K.tif
-	map_Kd texturas\8K Moon_Diff_4K.tif
+	map_Ka texturas\8K Moon_Diff_4K_1.jpg
+	map_Kd texturas\8K Moon_Diff_4K_1.jpg

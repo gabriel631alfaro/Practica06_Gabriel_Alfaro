@@ -39,7 +39,7 @@ void DoMovement( );
 
 
 // Camera
-Camera camera( glm::vec3( 5.0f, 0.0f,15.0f ) ); // modificación de la camara 
+Camera camera( glm::vec3( -20.0f, 5.0f,-60.0f ) ); // modificación de la camara 
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -102,8 +102,20 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj "); //ruta para cargar el modelo 3d 
+    //Luna 
+    Model moon((char*)"Models/Luna.obj");
+    //Nave 
+    Model nave((char*)"Models/Nave2.obj");
+    // Astronauta 
+    Model astronauta((char*)"Models/Astronauta.obj");
+    //Bandera 
+    Model bandera((char*)"Models/Bandera.obj");
+    //Tierra
+    Model tierra((char*)"Models/tierra.obj");
+
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
-    
+ 
+
   
 
     // Game loop
@@ -119,7 +131,7 @@ int main( )
         DoMovement();
 
         // Clear the colorbuffer
-        glClearColor(0.012f, 0.016f, 0.259f, 1.0f);
+        glClearColor(0.016f, 0.027f, 0.188f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shader.Use();
@@ -131,11 +143,46 @@ int main( )
         // Draw the loaded model
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //perro
+        model = glm::translate(model, glm::vec3(10.0f, -2.5f, -15.0f));
+        model = glm::scale(model, glm::vec3(5.0f,5.0f, 5.0f));
+        model = glm::rotate(model, 90.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        //model = glm::rotate(model, 90.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
 
-        //agregar otro modelo
+        //Luna
+        model = glm::translate(model, glm::vec3(5.0f, -0.5f, -10.0f));
+        model = glm::scale(model, glm::vec3(0.25f, 0.125f, 0.25f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        moon.Draw(shader);
 
+        //Nave
+        model = glm::translate(model, glm::vec3(-8.0f, 10.0f, 7.0f));
+        model = glm::scale(model, glm::vec3(0.5f,0.5f, 0.5f));
+        //model = glm::rotate(model, 3.0f, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        nave.Draw(shader);
 
+        //Astronauta 
+        model = glm::translate(model, glm::vec3(-15.0f, -18.0f, 40.0f));
+        model = glm::scale(model, glm::vec3(0.85f, 0.85f, 0.85f));
+        //model = glm::rotate(model, 3.0f, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        astronauta.Draw(shader);
+
+        //Bandera
+        model = glm::translate(model, glm::vec3(-15.0f, 0.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.5f, 1.0f, 1.0f));
+        //model = glm::rotate(model, 3.0f, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        bandera.Draw(shader);
+        //Bandera
+        model = glm::translate(model, glm::vec3(-80.0f, 100.0f, -100.0f));
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        //model = glm::rotate(model, 180.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        tierra.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
