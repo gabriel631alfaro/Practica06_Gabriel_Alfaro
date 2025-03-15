@@ -177,7 +177,8 @@ int main( )
         //model = glm::rotate(model, 3.0f, glm::vec3(0.0f, -1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         bandera.Draw(shader);
-        //Bandera
+
+        //tierra
         model = glm::translate(model, glm::vec3(-80.0f, 100.0f, -100.0f));
         model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
         //model = glm::rotate(model, 180.0f, glm::vec3(0.0f, 1.0f, 0.0f));
